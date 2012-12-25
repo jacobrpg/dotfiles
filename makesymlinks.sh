@@ -37,22 +37,21 @@ else
 fi
 }
 
-install_zsh
+#install_zsh
 
 # change to the dotfiles directory
 echo "Changing to the $dir directory"
 cd $dir
 echo "...done"
 
-# Create symlinks from the homedir to any files in the ~/.dotfiles directory
-for file in *; do
+# Create symlinks from the homedir to any files in the ~/.dotfiles 
+files=*
+files="$files oh-my-zsh/custom/jacob.zsh-theme"
+for file in $files; do
+    echo $file
     if [[ ! $excludes =~ $file ]]; then 
+        echo ""
         echo "Creating symlink to $file in home directory."
         ln -s $dir/$file ~/.$file
     fi
 done
-
-# Custom oh-my-zsh Theme
-echo "Creating symlink to $dir/oh-my-zsh/custom in home directory."
-rm -rf ~/.oh-my-zsh/custom
-ln -s $dir/oh-my-zsh/custom ~/.oh-my-zsh/custom
