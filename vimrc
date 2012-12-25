@@ -33,9 +33,9 @@ set ofu=syntaxcomplete#Complete
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 03. Theme/Colors                                                           "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set t_Co=256              " enable 256-color mode.
-syntax enable             " enable syntax highlighting (previously syntax on).
-colorscheme molokai       " set colorscheme
+syntax enable
+set background=dark
+colorscheme solarized
 
 " Prettify JSON files
 autocmd BufRead,BufNewFile *.json set filetype=json

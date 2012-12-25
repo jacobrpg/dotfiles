@@ -8,7 +8,7 @@ ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="xiong-chiamiov-plus"
+ZSH_THEME="jacobrpg"
 
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
@@ -27,31 +27,23 @@ COMPLETION_WAITING_DOTS="true"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git osx)
+plugins=(git command-not-found pip django)
 
 source $ZSH/oh-my-zsh.sh
 
-# Put any proprietary or private functions/values in ~/.private, and this will source them
-if [ -f $HOME/.private ]; then
-    source $HOME/.private
-fi
-
-if [ -f $HOME/.profile ]; then
-    source $HOME/.profile  # Read Mac .profile, if present.
-fi
-
 # Shell Aliases
 ## Git Aliases
-alias gs='git status '
-alias ga='git add '
-alias gb='git branch '
-alias gc='git commit'
+alias ga='git add'
+alias gl='git pull --prune'
+alias glog="git log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
+alias gp='git push origin HEAD'
 alias gd='git diff'
-alias go='git checkout '
-alias gk='gitk --all&'
-alias gx='gitx --all'
-alias got='git '
-alias get='git '
+alias gco='git checkout'
+alias gc='git commit'
+alias gca='git commit -a'
+alias gb='git branch'
+alias gs='git status -sb' # upgrade your git if -sb breaks for you. it's fun.
+alias grm="git status | grep deleted | awk '{print \$3}' | xargs git rm"
 
 # qfind - used to quickly find files that contain a string in a directory
 qfind () {
@@ -64,3 +56,14 @@ qfind () {
 if [ -f /usr/bin/vim ]; then
     export EDITOR=/usr/bin/vim
 fi
+
+# virtualenvwrapper
+export WORKON_HOME=~/.virtualenvs
+source /usr/local/bin/virtualenvwrapper.sh
+
+# Solarized Theme for ls command
+eval `dircolors ~/.dircolors`
+
+# Android SDK
+export PATH=${PATH}:/home/jacob/android-sdk-linux/platform-tools
+                                                                

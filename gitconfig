@@ -1,0 +1,34 @@
+# Sample gitconfig
+#
+# You probably want to change the [user] section here since you are not me.
+
+[hub]
+        protocol = https
+[user]
+        name = Jacob Parra
+        email = jacobrpg@gmail.com
+[alias]
+        co = checkout
+
+[color]
+        diff = auto
+        status = auto
+        branch = auto
+        ui = true
+[core]
+        excludesfile = ~/.gitignore
+        editor = vim
+        autocrlf = input
+[apply]
+        whitespace = nowarn
+[mergetool]
+        keepBackup = false
+[difftool]
+        prompt = false
+[help]
+        autocorrect = 1
+[format]
+        pretty = %C(yellow)%h%Creset %s %C(red)(%an, %cr)%Creset
+
+[credential]
+        helper = cache
