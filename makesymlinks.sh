@@ -37,7 +37,25 @@ else
 fi
 }
 
-#install_zsh
+function symlink_sublime_preferences {
+# Check platform
+platform=$(uname);
+# If the platform is Linux
+if [[ $platform == 'Linux' ]]; then
+    echo "Creating symlink to $dir/sublime-text-2/Packages/User in ~/.config/sublime-text-2/Packages/User"
+    rm -rf ~/.config/sublime-text-2/Packages/User
+    ln -s $dir/sublime-text-2/Packages/User ~/.config/sublime-text-2/Packages/User
+# If the platform is OS X, tell the user to install zsh :)
+elif [[ $platform == 'Darwin' ]]; then
+    echo "Creating symlink to $dir/sublime-text-2/Packages/User in ~/.config/sublime-text-2/Packages/User"
+    rm -rf ~/Library/Application\ Support/Sublime\ Text\ 2/Packages/User
+    ln -s $dir/sublime-text-2/Packages/User ~/Library/Application\ Support/Sublime\ Text\ 2/Packages/User
+fi
+}
+# Uncomment if Sublime Text 2 is installed
+#symlink_sublime_preferences
+
+install_zsh
 
 # change to the dotfiles directory
 echo "Changing to the $dir directory"
