@@ -34,8 +34,8 @@ set ofu=syntaxcomplete#Complete
 " 03. Theme/Colors                                                           "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 syntax enable
-set background=dark
-colorscheme solarized
+"set background=dark
+"colorscheme solarized
 
 " Prettify JSON files
 autocmd BufRead,BufNewFile *.json set filetype=json
