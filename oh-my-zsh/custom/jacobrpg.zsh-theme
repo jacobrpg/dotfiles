@@ -1,54 +1,27 @@
 function git_prompt_custom() {
   ref=$(git symbolic-ref HEAD 2> /dev/null) || return
-  echo "$(parse_git_dirty)$ZSH_THEME_GIT_PROMPT_PREFIX$(current_branch)$ZSH_THEME_GIT_PROMPT_SUFFIX"
+  echo "on $(parse_git_dirty)$(git_prompt_info)"
 }
 
-function get_pwd() {
-  print -D $PWD
+function prompt_char {
+    git branch >/dev/null 2>/dev/null && echo '±' && return
+    hg root >/dev/null 2>/dev/null && echo '☿' && return
+    echo '→'
 }
 
-function battery_charge() {
-  if [ -e ~/bin/batcharge.py ]
-  then
-    echo `python ~/bin/batcharge.py`
-  else
-    echo ''
-  fi
+function virtualenv_info {
+    [ $VIRTUAL_ENV ] && echo '('`basename $VIRTUAL_ENV`') '
 }
 
-function put_spacing() {
-  local git=$(git_prompt_info)
-  if [ ${#git} != 0 ]; then
-    ((git=${#git} - 10))
-  else
-    git=0
-  fi
+PROMPT='
+%{$fg[cyan]%}%n%{$reset_color%} at %{$fg[cyan]%}%m%{$reset_color%} in $fg[yellow]${PWD/#$HOME/~}%{$reset_color%} $(git_prompt_custom)
+$(virtualenv_info)%(?,,%{${fg_bold[white]}%}[%?]%{$reset_color%})→ '
 
-  local bat=$(battery_charge)
-  if [ ${#bat} != 0 ]; then
-    ((bat = ${#bat} - 18))
-  else
-    bat=0
-  fi
-
-  local termwidth
-  (( termwidth = ${COLUMNS} - 3 - ${#HOST} - ${#$(get_pwd)} - ${bat} - ${git} ))
-
-  local spacing=""
-  for i in {1..$termwidth}; do
-    spacing="${spacing} " 
-  done
-  echo $spacing
-}
-
-function precmd() {
-print -rP '
-$fg[cyan]%m: $fg[yellow]$(get_pwd)$(put_spacing)$(git_prompt_custom) $(battery_charge)'
-}
-
-PROMPT='%{$reset_color%}→ '
+PROMPT='
+%{$fg[cyan]%}%n%{$reset_color%} at %{$fg[cyan]%}%m%{$reset_color%} in $fg[yellow]${PWD/#$HOME/~}%{$reset_color%} $(git_prompt_custom)
+→ '
 
 ZSH_THEME_GIT_PROMPT_PREFIX="[git:"
 ZSH_THEME_GIT_PROMPT_SUFFIX="]$reset_color"
-ZSH_THEME_GIT_PROMPT_DIRTY="$fg[red]+"
+ZSH_THEME_GIT_PROMPT_DIRTY="$fg[red]"
 ZSH_THEME_GIT_PROMPT_CLEAN="$fg[green]"
