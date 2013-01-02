@@ -47,15 +47,13 @@ if [[ $platform == 'Linux' ]]; then
     ln -s $dir/sublime-text-2/Packages/User ~/.config/sublime-text-2/Packages/User
 # If the platform is OS X, tell the user to install zsh :)
 elif [[ $platform == 'Darwin' ]]; then
-    echo "Creating symlink to $dir/sublime-text-2/Packages/User in ~/.config/sublime-text-2/Packages/User"
+    echo "Creating symlink to $dir/sublime-text-2/Packages/User in ~/Library/Application\ Support/Sublime\ Text\ 2/Packages/User"
     rm -rf ~/Library/Application\ Support/Sublime\ Text\ 2/Packages/User
     ln -s $dir/sublime-text-2/Packages/User ~/Library/Application\ Support/Sublime\ Text\ 2/Packages/User
 fi
 }
 # Uncomment if Sublime Text 2 is installed
 #symlink_sublime_preferences
-
-install_zsh
 
 # change to the dotfiles directory
 echo "Changing to the $dir directory"
@@ -64,12 +62,12 @@ echo "...done"
 
 # Create symlinks from the homedir to any files in the ~/.dotfiles 
 files=*
-files="$files oh-my-zsh/custom/jacob.zsh-theme"
+files="$files oh-my-zsh/custom/jacobrpg.zsh-theme"
 for file in $files; do
     echo $file
     if [[ ! $excludes =~ $file ]]; then 
-        echo ""
         echo "Creating symlink to $file in home directory."
+        rm ~/.$file
         ln -s $dir/$file ~/.$file
     fi
 done

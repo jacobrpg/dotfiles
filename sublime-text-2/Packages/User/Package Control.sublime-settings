@@ -1,7 +1,10 @@
 {
 	"installed_packages":
 	[
+		"Git",
+		"Modific",
 		"Package Control",
+		"SublimeBlockCursor",
 		"SublimeLinter"
 	]
 }
