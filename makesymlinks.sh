@@ -7,7 +7,7 @@
 ########## Variables
 
 dir=~/.dotfiles                    # dotfiles directory
-excludes="makesymlinks.sh README.markdown oh-my-zsh"    # list of files/folders to symlink in homedir
+excludes="makesymlinks.sh README.markdown oh-my-zsh sublime-text-2"    # list of files/folders to symlink in homedir
 
 ##########
 
@@ -36,6 +36,7 @@ else
     fi
 fi
 }
+install_zsh
 
 function symlink_sublime_preferences {
 # Check platform

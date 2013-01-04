@@ -57,13 +57,13 @@ if [ -f /usr/bin/vim ]; then
     export EDITOR=/usr/bin/vim
 fi
 
-# virtualenvwrapper
-export WORKON_HOME=~/.virtualenvs
-source /usr/local/bin/virtualenvwrapper.sh
+# Solarized Theme for GNU ls command, uncomment if using Linux
+#eval `dircolors ~/.dircolors`
 
-# Solarized Theme for ls command
-eval `dircolors ~/.dircolors`
+# Virtualenvwrapper, uncomment if installed
+#export WORKON_HOME=~/.virtualenvs
+#source /usr/local/bin/virtualenvwrapper.sh
 
-# Android SDK
-export PATH=${PATH}:/home/jacob/android-sdk-linux/platform-tools
+# Android SDK, uncomment if installed
+#export PATH=${PATH}:~/android-sdk-linux/platform-tools
                                                                 
