@@ -14,12 +14,12 @@ function virtualenv_info {
 }
 
 PROMPT='
-%{$fg[cyan]%}%n%{$reset_color%} at %{$fg[cyan]%}%m%{$reset_color%} in $fg[yellow]${PWD/#$HOME/~}%{$reset_color%} $(git_prompt_custom)
+%{$fg[blue]%}%n%{$reset_color%} at %{$fg[cyan]%}%m%{$reset_color%} in $fg[yellow]${PWD/#$HOME/~}%{$reset_color%} $(git_prompt_custom)
 $(virtualenv_info)%(?,,%{${fg_bold[white]}%}[%?]%{$reset_color%})→ '
 
 PROMPT='
-%{$fg[cyan]%}%n%{$reset_color%} at %{$fg[cyan]%}%m%{$reset_color%} in $fg[yellow]${PWD/#$HOME/~}%{$reset_color%} $(git_prompt_custom)
-→ '
+%{$fg[blue]%}%n%{$reset_color%} at %{$fg[cyan]%}%m%{$reset_color%} in $fg[yellow]${PWD/#$HOME/~}%{$reset_color%} $(git_prompt_custom)
+$(prompt_char) '
 
 ZSH_THEME_GIT_PROMPT_PREFIX="[git:"
 ZSH_THEME_GIT_PROMPT_SUFFIX="]$reset_color"
