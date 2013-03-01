@@ -65,10 +65,12 @@ echo "...done"
 files=*
 files="$files oh-my-zsh/custom/jacobrpg.zsh-theme"
 for file in $files; do
-    echo $file
     if [[ ! $excludes =~ $file ]]; then 
         echo "Creating symlink to $file in home directory."
-        rm ~/.$file
+        if [ -e ~/.$file ]
+        then
+            rm ~/.$file
+        fi
         ln -s $dir/$file ~/.$file
     fi
 done
