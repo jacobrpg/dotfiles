@@ -104,7 +104,3 @@ fi
 
 # Android SDK, uncomment if installed
 #export PATH=${PATH}:~/android-sdk-linux/platform-tools
-
-# Undosxtres server
-alias undosxtres='ssh ubuntu@undosxtres.com -i ~/.ssh/undosxtres.pem'
-
