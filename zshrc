@@ -27,7 +27,7 @@ COMPLETION_WAITING_DOTS="true"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git command-not-found pip django)
+plugins=(git command-not-found pip django virtualenvwrapper)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -96,11 +96,11 @@ if [ -f /usr/bin/vim ]; then
 fi
 
 # Solarized Theme for GNU ls command, uncomment if using Linux
-#eval `dircolors ~/.dircolors`
+eval `dircolors ~/.dircolors`
 
 # Virtualenvwrapper, uncomment if installed
-#export WORKON_HOME=~/.virtualenvs
-#source /usr/local/bin/virtualenvwrapper.sh
+export WORKON_HOME=~/.virtualenvs
+source /usr/local/bin/virtualenvwrapper.sh
 
 # Android SDK, uncomment if installed
 #export PATH=${PATH}:~/android-sdk-linux/platform-tools
