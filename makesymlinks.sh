@@ -7,7 +7,7 @@
 ########## Variables
 
 dir=~/.dotfiles                    # dotfiles directory
-excludes="makesymlinks.sh README.markdown oh-my-zsh sublime-text-2"    # list of files/folders to symlink in homedir
+excludes="makesymlinks.sh README.markdown oh-my-zsh sublime-text-3"    # list of files/folders to symlink in homedir
 
 ##########
 
@@ -31,30 +31,43 @@ else
         install_zsh
     # If the platform is OS X, tell the user to install zsh :)
     elif [[ $platform == 'Darwin' ]]; then
-        echo "Please install zsh, then re-run this script!"
-        exit
+            echo "Please install zsh, then re-run this script!"
+            exit
     fi
 fi
 }
 install_zsh
 
-function symlink_sublime_preferences {
+function install_sublime {
 # Check platform
 platform=$(uname);
 # If the platform is Linux
 if [[ $platform == 'Linux' ]]; then
-    echo "Creating symlink to $dir/sublime-text-3/Packages/User in ~/.config/sublime-text-3/Packages/User"
-    rm -rf ~/.config/sublime-text-3/Packages/User
-    ln -s $dir/sublime-text-3/Packages/User ~/.config/sublime-text-3/Packages/User
-# If the platform is OS X, tell the user to install zsh :)
+    # Test to see if Sublime Text 3 is installed.  If it is:
+    if [ -f /usr/bin/subl ]; then
+	    echo "Creating symlink to $dir/sublime-text-3/Packages/User in ~/.config/sublime-text-3/Packages/User"
+	    rm -rf ~/.config/sublime-text-3/Packages/User
+	    ln -s $dir/sublime-text-3/Packages/User ~/.config/sublime-text-3/Packages/User
+    else
+        # If Sublime Text isn't installed, try an apt-get to install sublime and then recurse
+        sudo add-apt-repository ppa:webupd8team/sublime-text-3
+        sudo apt-get update
+        sudo apt-get install sublime-text-installer
+        install_sublime
+    fi
+# If the platform is OS X
 elif [[ $platform == 'Darwin' ]]; then
-    echo "Creating symlink to $dir/sublime-text-3/Packages/User in ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User"
-    rm -rf ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User
-    ln -s $dir/sublime-text-3/Packages/User ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User
+    if [ -d "~/Library/Application Support/Sublime Text 3" ]; then
+        echo "Creating symlink to $dir/sublime-text-3/Packages/User in ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User"
+        rm -rf ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User
+        ln -s $dir/sublime-text-3/Packages/User ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User
+    else
+        echo "Please install Sublime Text 3, then re-run this script!"
+        exit
+    fi
 fi
 }
-# Uncomment if Sublime Text 2 is installed
-symlink_sublime_preferences
+install_sublime
 
 # change to the dotfiles directory
 echo "Changing to the $dir directory"
