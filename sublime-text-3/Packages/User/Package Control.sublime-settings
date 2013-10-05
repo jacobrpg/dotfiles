@@ -4,10 +4,11 @@
 	[
 		"Alignment",
 		"Emmet",
-		"Git",
-		"HTML5",
+		"GitGutter",
 		"Package Control",
+		"Sass",
 		"SideBarEnhancements",
-		"SublimeLinter"
+		"Solarized Color Scheme",
+		"SublimeREPL"
 	]
 }
