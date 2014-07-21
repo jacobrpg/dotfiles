@@ -7,7 +7,7 @@
 ########## Variables
 
 dir=~/.dotfiles                    # dotfiles directory
-excludes="makesymlinks.sh README.markdown oh-my-zsh sublime-text-3"    # list of files/folders to symlink in homedir
+excludes="makesymlinks.sh README.markdown oh-my-zsh"    # list of files/folders to symlink in homedir
 
 ##########
 
@@ -20,7 +20,7 @@ if [ -f /bin/zsh -o -f /usr/bin/zsh ]; then
     fi
     # Set the default shell to zsh if it isn't currently set to zsh
     if [[ ! $(echo $SHELL) == $(which zsh) ]]; then
-        chsh -s $(which zsh)
+        chsh $USER -s $(which zsh);
     fi
 else
     # If zsh isn't installed, get the platform of the current machine
@@ -67,7 +67,7 @@ elif [[ $platform == 'Darwin' ]]; then
     fi
 fi
 }
-install_sublime
+#install_sublime
 
 # change to the dotfiles directory
 echo "Changing to the $dir directory"
