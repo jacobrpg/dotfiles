@@ -5,8 +5,8 @@
 [hub]
         protocol = https
 [user]
-        name = Jacob Parra
-        email = jacobrpg@gmail.com
+	name = Jacob Parra
+	email = jacobrpg@gmail.com
 [alias]
         co = checkout
 
