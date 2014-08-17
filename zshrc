@@ -84,9 +84,7 @@ if [ -f /usr/bin/vim ]; then
 fi
 
 # Solarized Theme for GNU ls command, uncomment if using Linux
-# https://github.com/seebi/dircolors-solarized#256dark
-eval `dircolors ~/.dircolors.256dark`
-export TERM=xterm-256color        # for common 256 color terminals (e.g. gnome-terminal)
+eval `dircolors ~/.dircolors`
 
 # Virtualenvwrapper, uncomment if installed
 export WORKON_HOME=~/.virtualenvs

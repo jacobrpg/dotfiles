@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 ############################
 # This script creates symlinks from the home directory to any desired dotfiles in ~/.dotfiles
 ############################
@@ -38,11 +38,8 @@ install_zsh
 
 echo "Downloading dircolors-solarized"
 # https://github.com/seebi/dircolors-solarized
-if [ -e ~/.dircolors.256dark ]
-then
-    rm ~/.dircolors.256dark
-fi
-wget --no-check-certificate https://raw.githubusercontent.com/seebi/dircolors-solarized/master/dircolors.256dark -O ~/.dircolors.256dark
+rm -f ~/.dircolors
+wget --no-check-certificate https://raw.githubusercontent.com/seebi/dircolors-solarized/master/dircolors.ansi-dark -O ~/.dircolors
 
 # change to the dotfiles directory
 echo "Changing to the $dir directory"
