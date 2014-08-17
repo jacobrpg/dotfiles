@@ -8,7 +8,7 @@ ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="jacobrpg"
+ZSH_THEME="jacobparra"
 
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
@@ -65,23 +65,11 @@ alias s="subl ."
 alias o="open"
 alias oo="open ."
 
-# Show/hide hidden files in Finder
-alias show="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"
-alias hide="defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder"
-
-# Hide/show all desktop icons (useful when presenting)
-alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
-alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
-
 # Recursively delete `.DS_Store` files
 alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"
 
 # URL-encode strings
 alias urlencode='python -c "import sys, urllib as ul; print ul.quote_plus(sys.argv[1]);"'
-
-# Ring the terminal bell, and put a badge on Terminal.app’s Dock icon
-# (useful when executing time-consuming commands)
-alias badge="tput bel"
 
 # qfind - used to quickly find files that contain a string in a directory
 qfind () {
@@ -96,7 +84,9 @@ if [ -f /usr/bin/vim ]; then
 fi
 
 # Solarized Theme for GNU ls command, uncomment if using Linux
-eval `dircolors ~/.dircolors.ansi-dark`
+# https://github.com/seebi/dircolors-solarized#256dark
+eval `dircolors ~/.dircolors.256dark`
+export TERM=xterm-256color        # for common 256 color terminals (e.g. gnome-terminal)
 
 # Virtualenvwrapper, uncomment if installed
 export WORKON_HOME=~/.virtualenvs
