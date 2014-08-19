@@ -34,23 +34,21 @@ source $ZSH/oh-my-zsh.sh
 # Shell Aliases
 ## Git Aliases
 alias ga='git add'
-alias gl='git pull --prune'
-alias glog="git log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
-alias gp='git push origin HEAD'
-alias gd='git diff'
-alias gco='git checkout'
 alias gc='git commit'
-alias gca='git commit -a'
+alias gl='git pull'
+alias gp='git push'
+alias gco='git checkout'
 alias gb='git branch'
+alias gd='git diff'
 alias gs='git status -sb' # upgrade your git if -sb breaks for you. it's fun.
-alias grm="git status | grep deleted | awk '{print \$3}' | xargs git rm"
+alias grm='git rm $(git ls-files -d)'
+alias glog="git log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
 
 # Easier navigation: .., ..., ...., ....., ~ and -
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
-alias ~="cd ~" # `cd` is probably faster to type though
 alias -- -="cd -"
 
 # Shortcuts
@@ -59,11 +57,8 @@ alias dl="cd ~/Downloads"
 alias dt="cd ~/Desktop"
 alias c="cd ~/Code"
 alias g="git"
-alias h="history"
 alias v="vim"
 alias s="subl ."
-alias o="open"
-alias oo="open ."
 
 # Recursively delete `.DS_Store` files
 alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"
@@ -71,11 +66,10 @@ alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"
 # URL-encode strings
 alias urlencode='python -c "import sys, urllib as ul; print ul.quote_plus(sys.argv[1]);"'
 
-# qfind - used to quickly find files that contain a string in a directory
-qfind () {
-    find . -exec grep -l $1 {} \;
-    return 0
-}
+# Simple Server with python 2.7
+alias servethis='python -m SimpleHTTPServer'
+# for python 3.x version:
+#alias servethis='python -m http.server'
 
 # Custom exports
 ## Set EDITOR to /usr/bin/vim if Vim is installed
